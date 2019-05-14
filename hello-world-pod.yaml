@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-world
+spec:
+  restartPolicy: OnFailure
+  containers:
+    - name: hello
+      image: 'ubuntu:14.04'
+      command: ['/bin/echo','Hello','World']
+
+# kubectl create -f hello-world-pod.yaml
+# kubectl get pod hello-world -a
+# kubectl logs hello-world
+# kubectl delete pod hello-world
+
