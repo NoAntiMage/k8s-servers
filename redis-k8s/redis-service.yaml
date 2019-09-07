@@ -9,4 +9,4 @@ spec:
      targetPort: 6379
      nodePort: 30003
   selector:
-    app: redis
+    app: redis-pod
