@@ -15,6 +15,10 @@ spec:
         containers:
         - name: redis
           image: redis
+          command:
+            - "redis-server"
+          args:
+            - "/redis/conf/redis.conf"
           resources:
             requests:
               cpu: 100m              #限制cpu的数量为0.1个
@@ -23,7 +27,7 @@ spec:
           - containerPort: 6379
           volumeMounts:
           - name: redis-config
-            mountPath: /redis/conf/
+            mountPath: /redis/conf
         volumes:
           - name: redis-config
             configMap:
