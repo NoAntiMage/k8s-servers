@@ -1,0 +1,36 @@
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: gitlab-runner-pod
+  name: gitlab-runners
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gitlab-runner-pod
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: gitlab-runner-pod
+    spec:
+      containers:
+      - image: gitlab-runner:shell_register
+        imagePullPolicy: IfNotPresent
+        name: gitlab-runners
+        volumeMounts:
+          - mountPath: /var/run/docker.sock
+            name: docker-socket
+      volumes:
+        - name: docker-socket
+          hostPath:
+          # directory location on host
+            path: /var/run/docker.sock
+      restartPolicy: Always
