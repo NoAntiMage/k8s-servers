@@ -1,0 +1,16 @@
+heaapiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-exec-pod
+  namespace: default
+spec:
+  containers:
+    - name: liveness-exec-contaienr
+      image: busybox
+      imagePullPolicy: IfNotPresent
+      command: [ "/bin/sh", "-c", "touch /tmp/live;sleep 10;rm -rf /tmp/live;sleep 20" ]
+      livenessProbe:
+        exec:
+          command: [ "test", "-e", "/tmp/live"]
+        initialDelaySeconds: 1
+        periodSeconds: 3
