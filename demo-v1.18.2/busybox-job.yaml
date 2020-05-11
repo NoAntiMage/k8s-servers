@@ -1,14 +1,14 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-    name: pi
+  name: pi
 spec:
-    template:
-        metadata:
-            name: pi
-        spec:
-            containers:
-                - name: pi
-                  image: busybox
-                  command: ["echo", "hello"]
-            restartPolicy: Never
+  template:
+    metadata:
+      name: pi
+    spec:
+      containers:
+        - name: pi
+          image: busybox
+          command: ["echo", "hello"]
+      restartPolicy: Never
