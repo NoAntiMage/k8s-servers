@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+    name: frontend
+spec:
+    replicas: 3
+    selector:
+        metchLabels:
+            tier: frontend
+    template:
+        metadata:
+            labels:
+                tier: frontend
+        spec:
+            container:
+                - name: myapp
+                  image: nginx:1.7.9
+                  env:
+                    - name: GET_HOST_FROM
+                      value: dns
+                      ports:
+                        - containerPort: 80
+
+#k8s 1.14
