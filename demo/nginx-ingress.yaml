@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: ingress
+metadata:
+  name: the-ingress
+spec:
+  tls:
+    - hosts:
+      - www.helloworld.com
+      secretName: the-secret
+  rules:
+    - host: www.helloworld.com
+      http:
+        paths:
+          - path: /tea
+            backend:
+              serviceName: tea-svc
+              servicePort: 80
+          - path: /coffeee
+            backend:
+              serviceName: coffee-svc
+              servicePort: 80
