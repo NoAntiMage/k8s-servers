@@ -1,0 +1,1 @@
+k delete cm prometheus-config --namespace monitoring  &&k create configmap prometheus-config --from-file=prometheus.yml --namespace monitoring
