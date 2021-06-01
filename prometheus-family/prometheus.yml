@@ -31,3 +31,9 @@ scrape_configs:
 #  - job_name: "kube-state-metrics"
 #    static_configs:
 #    - targets: ['kube-state-metrics.kube-system.svc.cluster.local:8080']
+
+  # - job_name: "k8s-nodes"
+  #   static_configs:
+  #   - targets:
+  #     - 172.26.110.81:30910
+  #     - 172.26.110.82:30910
